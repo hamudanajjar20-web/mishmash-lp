@@ -405,7 +405,8 @@ var CFG={
   wa:'966596064997',          /* واتساب المتجر بالصيغة الدولية بدون + */
   p1:38, p2:19,               /* السعر بالدينار: 200 مل / 100 مل */
   old1:null, old2:null,       /* السعر قبل الخصم إن وجد */
-  tiktok:'https://www.tiktok.com/@mishmash03'
+  tiktok:'https://www.tiktok.com/@mishmash03',
+  sheet:''                    /* رابط Google Apps Script Web App (ينتهي بـ /exec). فاضي = ما يسجل */
 };
 
 /* التقييمات: من سلة (تقييمات منشورة فيها نص)، منقولة زي ما هي */
@@ -465,6 +466,8 @@ var REVS=[
       '• الجوال: '+document.getElementById('fp').value.trim()+'\n'+
       '• المحافظة: '+document.getElementById('fc').value+'\n'+
       '• العنوان: '+document.getElementById('fa').value.trim();
+    if(CFG.sheet){try{var u=new URLSearchParams(location.search),d=new URLSearchParams({name:document.getElementById('fn').value.trim(),phone:document.getElementById('fp').value.trim(),city:document.getElementById('fc').value,addr:document.getElementById('fa').value.trim(),size:q()==='2'?'200 مل':'100 مل',price:price(),src:u.get('utm_source')||u.get('utm_campaign')||'direct'});
+      if(!(navigator.sendBeacon&&navigator.sendBeacon(CFG.sheet,d)))fetch(CFG.sheet,{method:'POST',mode:'no-cors',body:d,keepalive:true})}catch(e){}}
     if(window.fbq)fbq('track','Contact',{value:price(),currency:'JOD'});
     location.href='https://wa.me/'+CFG.wa+'?text='+encodeURIComponent(msg);
   });
