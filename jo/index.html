@@ -8,7 +8,7 @@
 <meta name="description" content="ZERO.10 من مشماش: رشة يومية على الفروة من أربع أعشاب مقطّرة. ما تدهّن ولا لها ريحة. كورس شهرين. توصيل مجاني داخل الأردن والدفع عند الاستلام.">
 <meta name="theme-color" content="#023339">
 <meta property="og:title" content="ZERO.10 · توصيل مجاني داخل الأردن">
-<meta property="og:description" content="رشة يومية على الفروة. اطلبي واتساب وادفعي عند الاستلام.">
+<meta property="og:description" content="رشة يومية على الفروة. اطلبي الحين وادفعي عند الاستلام.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://lp.mishmash-sa.com/jo/img/m1.webp">
 <meta property="og:url" content="https://lp.mishmash-sa.com/jo/">
@@ -212,6 +212,7 @@ footer a{color:#fff}
 @media (max-width:380px){.perks{grid-template-columns:1fr}.qty{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 .ksa-jo{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;text-align:center;padding:18px 16px 16px}.ksa-jo .flags{font-size:26px;letter-spacing:6px;line-height:1}.ksa-jo h2{font-family:var(--f-head);font-size:20px;margin:8px 0 6px;color:#fff}.ksa-jo p{margin:0;font-size:15px;color:var(--reverse);line-height:1.7}@media(min-width:720px){.ksa-jo h2{font-size:26px}}
+.btn-send{background:var(--primary);color:#fff;width:100%}.btn-send:hover{background:var(--primary-dark)}.done{background:#eefaf3;border:1.5px solid var(--wa);border-radius:var(--r);padding:22px 18px;text-align:center}.done .ok{width:52px;height:52px;border-radius:50%;background:var(--wa);color:#fff;font-size:28px;line-height:52px;margin:0 auto 8px}.done h3{margin:4px 0 8px;font-family:var(--f-head)}.done p{margin:0 0 14px;line-height:1.8}.done .btn{width:100%}
 </style>
 
 <!-- Meta Pixel: PageView + ViewContent + Contact (WhatsApp click). No purchase event on this page. -->
@@ -226,7 +227,7 @@ fbq('init','1687034512985984');fbq('track','PageView');
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#"><img src="https://cdn.files.salla.network/theme/710748088/6585776d-1f1c-40a1-881c-8db290044617.webp" alt="مشماش" width="40" height="40"><b>مشماش</b></a>
-    <a class="btn btn-wa" href="#order">اطلبي واتساب</a>
+    <a class="btn btn-wa" href="#order">اطلبي الحين</a>
   </div>
 </header>
 
@@ -269,9 +270,10 @@ fbq('init','1687034512985984');fbq('track','PageView');
           <input id="fa" name="addr" placeholder="المنطقة والعنوان" autocomplete="street-address" required>
         </div>
         <div class="total"><span>المجموع (التوصيل مجاني)</span><b><span id="tot">38</span> د.أ</b></div>
-        <button class="btn btn-wa" type="submit"><svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>أكملي الطلب على واتساب</button>
-        <div class="cod"><span>ما تدفعين شي الحين</span><span>نأكد طلبك على واتساب</span><span>توصيل لباب البيت</span></div>
+        <button class="btn btn-send" type="submit" id="sendbtn">إرسال الطلب</button>
+        <div class="cod"><span>ما تدفعين شي الحين</span><span>نتواصل معك ونأكد الطلب</span><span>توصيل لباب البيت</span></div>
       </form>
+      <div class="done" id="done" hidden><div class="ok">✓</div><h3>تم إرسال الطلب بنجاح ✅</h3><p>شكراً <b id="dn"></b>، فريق مشماش بيتواصل معك على جوالك قريب يأكد الطلب، والدفع عند الاستلام.</p><a class="btn btn-wa" id="dwa" href="#" target="_blank" rel="noopener">تبين تسرّعين؟ أرسلي طلبك واتساب</a></div>
     </div>
   </div>
 </section>
@@ -375,7 +377,7 @@ fbq('init','1687034512985984');fbq('track','PageView');
   <div class="wrap">
     <div class="sec-h"><h2 id="f-h">أسئلتكم قبل الطلب</h2></div>
     <div class="faq">
-      <details><summary>كيف أطلب؟</summary><div class="a">عبّي الاسم والجوال والمحافظة والعنوان، واضغطي «أكملي الطلب على واتساب». بتنفتح لك محادثة فيها تفاصيل طلبك جاهزة، ترسلينها ونأكد معك الطلب.</div></details>
+      <details><summary>كيف أطلب؟</summary><div class="a">عبّي الاسم والجوال والمحافظة والعنوان، واضغطي «إرسال الطلب». يوصلنا طلبك على طول ونتواصل معك نأكده، والدفع عند الاستلام.</div></details>
       <details><summary>متى أدفع؟</summary><div class="a">عند الاستلام. ما تدفعين أي شي قبل ما يوصلك الطلب.</div></details>
       <details><summary>كم التوصيل؟</summary><div class="a">التوصيل مجاني لكل محافظات الأردن.</div></details>
       <details><summary>متى ألاحظ الفرق؟</summary><div class="a">الكورس شهرين، وأغلب عميلاتنا يلاحظن الفرق خلال الشهر الأول.</div></details>
@@ -401,7 +403,7 @@ fbq('init','1687034512985984');fbq('track','PageView');
 <div class="buybar" id="buybar" aria-hidden="true">
   <div class="wrap">
     <div class="bb-p"><b><span id="bbp">38</span> د.أ</b><small>توصيل مجاني · الدفع عند الاستلام</small></div>
-    <a class="btn btn-wa" href="#order" tabindex="-1">اطلبي واتساب</a>
+    <a class="btn btn-wa" href="#order" tabindex="-1">اطلبي الحين</a>
   </div>
 </div>
 
@@ -473,9 +475,10 @@ var REVS=[
       '• المحافظة: '+document.getElementById('fc').value+'\n'+
       '• العنوان: '+document.getElementById('fa').value.trim();
     if(CFG.sheet){try{var u=new URLSearchParams(location.search),d=new URLSearchParams({name:document.getElementById('fn').value.trim(),phone:document.getElementById('fp').value.trim(),city:document.getElementById('fc').value,addr:document.getElementById('fa').value.trim(),size:q()==='2'?'200 مل':'100 مل',price:price(),src:u.get('utm_source')||u.get('utm_campaign')||'direct'});
-      if(!(navigator.sendBeacon&&navigator.sendBeacon(CFG.sheet,d)))fetch(CFG.sheet,{method:'POST',mode:'no-cors',body:d,keepalive:true})}catch(e){}}
+      fetch(CFG.sheet,{method:'POST',mode:'no-cors',body:d,keepalive:true}).catch(function(){try{navigator.sendBeacon&&navigator.sendBeacon(CFG.sheet,d)}catch(e){}})}catch(e){try{navigator.sendBeacon(CFG.sheet,d)}catch(x){}}}
     if(window.fbq)fbq('track','Contact',{value:price(),currency:'JOD'});
-    location.href='https://wa.me/'+CFG.wa+'?text='+encodeURIComponent(msg);
+    document.getElementById('dn').textContent=document.getElementById('fn').value.trim();document.getElementById('dwa').href='https://wa.me/'+CFG.wa+'?text='+encodeURIComponent(msg);
+    f.hidden=true;var dn=document.getElementById('done');dn.hidden=false;dn.scrollIntoView({behavior:'smooth',block:'center'});
   });
 
   /* swipe stack (reviews + photos) */
