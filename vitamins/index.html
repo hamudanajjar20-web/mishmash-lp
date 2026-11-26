@@ -210,6 +210,16 @@ footer a{color:#fff}
 }
 @media (max-width:420px){.q-grid{grid-template-columns:1fr}.herb{padding:16px 10px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.sw{padding:8px 16px 40px;text-align:center;overflow:hidden}
+.sw h2{font-family:Alexandria;font-weight:800;font-size:24px;margin:0 0 6px;color:#023339}
+.sw>p{margin:0 0 22px;color:#285257;font-size:15px}
+.sw-st{position:relative;width:min(86vw,380px);aspect-ratio:1;margin:0 auto;touch-action:pan-y}
+.sw-c{position:absolute;inset:0;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 10px 28px rgba(2,51,57,.18);transition:transform .35s ease,opacity .35s ease;user-select:none}
+.sw-c img{width:100%;height:100%;display:block;pointer-events:none}
+.sw-ctl{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:22px}
+.sw-ctl button{width:42px;height:42px;border-radius:50%;border:0;background:#023339;color:#ceffff;font-size:20px;cursor:pointer}
+.sw-d{display:flex;gap:6px}.sw-d i{width:7px;height:7px;border-radius:50%;background:#c9d5d7}.sw-d i.on{background:#023339;width:18px;border-radius:4px}
+.sw-h{margin-top:12px;font-size:13px;color:#285257}
 </style>
 
 <!-- Meta Pixel: PageView + ViewContent only. Purchases are tracked by Salla. -->
@@ -322,6 +332,22 @@ fbq('track','ViewContent',{content_ids:['498315623'],content_type:'product',valu
     <p class="ba-note">بعض الصور قديمة وفيها العبوة بالشكل القديم. العبوة الحين 200 مل بخاخ.</p>
   </div>
 </section>
+
+<!-- 5ب) صور تجارب إضافية -->
+<section class="sw" aria-label="صور تجارب إضافية"><h2>صور تجارب إضافية</h2><p>نتائج عميلات بعد شهر من ZERO.10</p>
+<div class="sw-st" id="swst"></div>
+<div class="sw-ctl"><button id="swn" aria-label="التالي">‹</button><div class="sw-d" id="swd"></div><button id="swp" aria-label="السابق">›</button></div>
+<div class="sw-h">اسحبي الصورة بإصبعك 👆</div></section>
+<script>
+(()=>{const n=7,st=document.getElementById('swst'),dt=document.getElementById('swd');let o=[...Array(n).keys()],c=[];
+for(let i=0;i<n;i++){const d=document.createElement('div');d.className='sw-c';d.innerHTML='<img src="img/more/m'+(i+1)+'.webp" alt="قبل وبعد '+(i+1)+'" loading="lazy" width="900" height="900">';st.appendChild(d);c.push(d);dt.appendChild(document.createElement('i'))}
+function lay(){o.forEach((k,p)=>{const e=c[k];e.style.zIndex=n-p;e.style.opacity=p>3?0:1;e.style.transform=p?`translateY(${p*10}px) scale(${1-p*.05}) rotate(${p%2?-3:3}deg)`:'none'});[...dt.children].forEach((d,i)=>d.className=i===o[0]?'on':'')}
+function go(r){const t=c[o[0]];if(r>0){t.style.transform=`translateX(${-r*120}%) rotate(${-r*18}deg)`;setTimeout(()=>{o.push(o.shift());lay()},250)}else{o.unshift(o.pop());lay()}}
+let x0=null,dx=0;st.addEventListener('pointerdown',e=>{x0=e.clientX;dx=0;c[o[0]].style.transition='none';st.setPointerCapture(e.pointerId)});
+st.addEventListener('pointermove',e=>{if(x0==null)return;dx=e.clientX-x0;c[o[0]].style.transform=`translateX(${dx}px) rotate(${dx/20}deg)`});
+const end=()=>{if(x0==null)return;c[o[0]].style.transition='';x0=null;Math.abs(dx)>60?go(dx<0?1:-1):lay()};st.addEventListener('pointerup',end);st.addEventListener('pointercancel',end);
+document.getElementById('swn').onclick=()=>go(1);document.getElementById('swp').onclick=()=>go(-1);lay()})();
+</script>
 
 <!-- 6) وش أتوقع + طريقة الاستخدام -->
 <section style="background:var(--grey)" aria-label="وش أتوقع وطريقة الاستخدام">
